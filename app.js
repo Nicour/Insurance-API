@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router()
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -19,7 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helpers.login());
-app.use(helpers.getClients());
+
+app.use(helpers.unless()('/policies', helpers.getClients()));
+app.use(helpers.unless()('/clients', helpers.getPolicies()));
 
 app.use('/policies', policies);
 app.use('/clients', clients);

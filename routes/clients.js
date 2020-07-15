@@ -8,10 +8,10 @@ router.get('/', async (req, res, next) => {
   try {
     let token = res.locals.token;
     if(token) {
-      helpers.getClients('clients');
+      helpers.getClients();
     } else {
       helpers.login();
-      helpers.getClients('clients');
+      helpers.getClients();
     }
   } catch (error) {
     next(error);
