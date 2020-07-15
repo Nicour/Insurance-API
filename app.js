@@ -1,10 +1,14 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const logger = require('morgan');
+
+const helpers = require('./helper/Auth')
 
 const auth = require('./routes/auth');
 const policies = require('./routes/policies');
+const clients = require('./routes/clients');
 
 const app = express();
 
@@ -15,9 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(helpers.login());
+app.use(helpers.getClientsOrPolicies());
 
 app.use('/auth', auth);
 app.use('/policies', policies);
+app.use('/clients', clients);
 
 app.use((req, res, next) => {
   res.status(404).json({ code: 'Not-Found' });

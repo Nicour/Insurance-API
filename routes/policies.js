@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   })
   .catch((err) => {
     if(err.message === "Request failed with status code 401") {
-      res.json({ message: "Your token is expired. Please login again to get a new token" });
+      res.json({ message: "The token is invalid. Please login again to get a new one" });
     }
   });
 });
