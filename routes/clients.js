@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const helpers = require('../helpers/Middlewares')
+const helpers = require('../helpers/Middlewares');
 
 router.get('/', async (req, res, next) => {
   try {

@@ -20,14 +20,22 @@ const login = () => (req, res, next) => {
 
 const getClients = () => (req, res, next) => {
   let token = res.locals.token;
-  axios.get(`https://dare-nodejs-assessment.herokuapp.com/api/clients`, { headers: { Authorization: `Bearer ${token}` } })
+  axios.get(`https://dare-nodejs-assessment.herokuapp.com/api/clients`, { 
+    headers: { 
+      Authorization: `Bearer ${token}` 
+    } 
+  })
   .then((response) => {
     res.send(response.data);
   })
   .catch(() => {
     login();
     token = res.locals.token;
-    axios.get('https://dare-nodejs-assessment.herokuapp.com/api/clients', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('https://dare-nodejs-assessment.herokuapp.com/api/clients', { 
+      headers: { 
+        Authorization: `Bearer ${token}` 
+      } 
+    })
     .then((response) => {
       res.send(response.data);
     });

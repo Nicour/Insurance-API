@@ -6,7 +6,6 @@ const logger = require('morgan');
 
 const helpers = require('./helpers/Middlewares')
 
-const auth = require('./routes/auth');
 const policies = require('./routes/policies');
 const clients = require('./routes/clients');
 
@@ -22,7 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helpers.login());
 app.use(helpers.getClients());
 
-app.use('/auth', auth);
 app.use('/policies', policies);
 app.use('/clients', clients);
 
