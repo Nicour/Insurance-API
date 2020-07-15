@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const helpers = require('../helper/Auth')
+const helpers = require('../helpers/Middlewares')
 
 router.get('/', async (req, res, next) => {
   try {
     let token = res.locals.token;
     if(token) {
-      helpers.getClientsOrPolicies();
+      helpers.getClients('clients');
     } else {
       helpers.login();
-      helpers.getClientsOrPolicies();
+      helpers.getClients('clients');
     }
   } catch (error) {
     next(error);

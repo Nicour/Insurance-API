@@ -18,9 +18,9 @@ const login = () => (req, res, next) => {
   });
 };
 
-const getClientsOrPolicies = () => (req, res, next) => {
+const getClients = () => (req, res, next) => {
   let token = res.locals.token;
-  axios.get('https://dare-nodejs-assessment.herokuapp.com/api/clients', { headers: { Authorization: `Bearer ${token}` } })
+  axios.get(`https://dare-nodejs-assessment.herokuapp.com/api/clients`, { headers: { Authorization: `Bearer ${token}` } })
   .then((response) => {
     res.send(response.data);
   })
@@ -36,6 +36,6 @@ const getClientsOrPolicies = () => (req, res, next) => {
 
 module.exports = {
   login: login,
-  getClientsOrPolicies: getClientsOrPolicies
+  getClients: getClients
 };
 

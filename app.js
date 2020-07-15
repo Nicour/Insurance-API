@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
-const helpers = require('./helper/Auth')
+const helpers = require('./helpers/Middlewares')
 
 const auth = require('./routes/auth');
 const policies = require('./routes/policies');
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(helpers.login());
-app.use(helpers.getClientsOrPolicies());
+app.use(helpers.getClients());
 
 app.use('/auth', auth);
 app.use('/policies', policies);
