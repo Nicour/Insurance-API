@@ -5,10 +5,13 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
-const helpers = require('./helpers/Middlewares')
+const unless = require('./helpers/Middlewares')
+const login = require('./helpers/Login')
+const clients = require('./helpers/Clients')
+const policies = require('./helpers/Policies')
 
-const policies = require('./routes/policies');
-const clients = require('./routes/clients');
+const policiesRoute = require('./routes/policies');
+const clientsRoute = require('./routes/clients');
 
 const app = express();
 
@@ -19,13 +22,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(helpers.login());
+app.use(login());
 
-app.use(helpers.unless()('/policies', helpers.getClients()));
-app.use(helpers.unless()('/clients', helpers.getPolicies()));
+app.use(unless()('/clients', policies.axiosForPolicies()));
+app.use(unless()('/clients', policies.getPolicies()));
+app.use(unless()('/policies', clients.axiosForClients()));
+app.use(unless()('/policies', clients.getClients()));
 
-app.use('/policies', policies);
-app.use('/clients', clients);
+app.use('/policies', policiesRoute);
+app.use('/clients', clientsRoute);
 
 app.use((req, res, next) => {
   res.status(404).json({ code: 'Not-Found' });

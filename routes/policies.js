@@ -4,17 +4,11 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const helpers = require('../helpers/Middlewares');
+const policies = require('../helpers/Policies');
 
 router.get('/', async (req, res, next) => {
   try {
-    let token = res.locals.token;
-    if(token) {
-      helpers.getPolicies();
-    } else {
-      helpers.login();
-      helpers.getPolicies();
-    }
+    policies.getPolicies();
   } catch (error) {
     next(error);
   }
