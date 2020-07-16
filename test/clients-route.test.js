@@ -18,9 +18,9 @@ describe("Test clients route", async () => {
     .get('/clients')
     .end((err, res) => {
       expect(err).to.be.null;
-      expect(res.body).to.be.a('array')
-      expect(res.body[0]).to.have.property('email')
       expect(res).to.have.status(200);
+      expect(res.body).to.be.a('array')
+      expect(res.body[0]).to.have.all.keys('id', 'name', 'email', 'role')
       done();
     });
   });

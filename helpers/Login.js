@@ -18,7 +18,7 @@ const login = () => (req, res, next) => {
     next();
   })
   .catch((err) => {
-    res.send(err);
+    next(err);
   });
 };
 

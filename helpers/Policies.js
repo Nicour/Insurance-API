@@ -14,17 +14,17 @@ const axiosForPolicies = () => (req, res, next) => {
     res.send(response.data);
   })
   .catch((err) => {
-    res.send(err);
+    next(err);
   })
 };
 
-const getPolicies = () => (req, res, next) => {
+const getPolicies = () => async (req, res, next) => {
   const expiresAt = res.locals.expiresAt;
   const now = moment().format();
   if(now < expiresAt) {
     axiosForPolicies();
   } else {
-    login();
+    await login();
     axiosForPolicies();
   }
 };

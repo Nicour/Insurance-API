@@ -14,17 +14,17 @@ const axiosForClients = () => (req, res, next) => {
     res.send(response.data);
   })
   .catch((err) => {
-    res.send(err);
+    next(err);
   })
 };
 
-const getClients = () => (req, res, next) => {
+const getClients = () => async (req, res, next) => {
   const expiresAt = res.locals.expiresAt;
   const now = moment().format();
   if(now < expiresAt) {
     axiosForClients();
   } else {
-    login();
+    await login();
     axiosForClients();
   }
 };

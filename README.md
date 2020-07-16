@@ -65,4 +65,21 @@ You can run it on your browser or use some tool as Postman.
 | getPolicies      | This function check if the token is still valid. If its valid call to the **axiosForPolicies** function. If not, first calls the **login** function and then calls the **axiosForPolicies** function                          |
 
   
+##  Test
+
+To test clients route run the following command:
+
+```bash
+
+npm run test-clients
+
+```
+
+To test policies route run the following command:
+
+```bash
+
+npm run test-policies
+
+```
 
