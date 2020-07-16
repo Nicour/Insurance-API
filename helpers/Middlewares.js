@@ -1,6 +1,7 @@
 'use strict';
 
 const axios = require('axios');
+const moment = require('moment');
 
 const login = () => (req, res, next) => {
   const data = { 
@@ -9,8 +10,11 @@ const login = () => (req, res, next) => {
   };
   axios.post('https://dare-nodejs-assessment.herokuapp.com/api/login', data)
   .then((response) => {
-    const token = response.data.token;
-    res.locals.token = token;
+    res.locals = {
+      token: response.data.token,
+      createdAt: moment(response.headers.date).format(),
+      expiresAt: moment().add(5, 'm').format()
+    };
     next();
   })
   .catch((err) => {
