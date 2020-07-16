@@ -61,3 +61,6 @@ You can run it on your browser or use some tool as Postman.
 | getClients        | This function check if the token is still valid. If its valid call to the **axiosForClients** function. If not, first calls the **login** function and then calls the **axiosForClients** function|
 | axiosForPolicies        | This function make a GET request to 'https://dare-nodejs-assessment.herokuapp.com/api/policies' and returns the list of clients|
 | getPolicies        | This function check if the token is still valid. If its valid call to the **axiosForPolicies** function. If not, first calls the **login** function and then calls the **axiosForPolicies** function|
+
+  
+
