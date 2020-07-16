@@ -4,11 +4,11 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const policies = require('../helpers/Policies');
+const { getPolicies } = require('../helpers/Policies');
 
 router.get('/', async (req, res, next) => {
   try {
-    policies.getPolicies();
+    getPolicies();
   } catch (error) {
     next(error);
   }
