@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 
 const unless = require('./helpers/Middlewares')
-const login = require('./helpers/Login')
-const { getClients, axiosForClients } = require('./helpers/Clients')
-const { getPolicies, axiosForPolicies } = require('./helpers/Policies')
+const login = require('./functions/Login')
+const { getClients, axiosForClients } = require('./functions/Clients')
+const { getPolicies, axiosForPolicies } = require('./functions/Policies')
 
 const policiesRoute = require('./routes/policies');
 const clientsRoute = require('./routes/clients');

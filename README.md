@@ -1,4 +1,4 @@
-# Nicolás Urman's asessment
+# Nicolás Urman's insurance API
 
 -This application use **Express.js** framework.
 <br>
@@ -58,11 +58,11 @@ You can run it on your browser or use some tool as Postman.
 
 | Name             |  Description                                                  |
 | ---------------- |-------------------------------------------------------------- |
-| login            |  This function logs in with a "client_id" and a "client_secret". The response includes a token that is stored and used to authenticate the user and only deliver the required information if the token is still valid. Also, this function store the date when the token was created and the date when it will expire, to make easier there future validation.                                    |
-| axiosForClients  | This function make a GET request to 'https://dare-nodejs-assessment.herokuapp.com/api/clients' and returns the list of clients|
-| getClients       | This function check if the token is still valid. If its valid call to the **axiosForClients** function. If not, first calls the **login** function and then calls the **axiosForClients** function                           |
-| axiosForPolicies | This function make a GET request to 'https://dare-nodejs-assessment.herokuapp.com/api/policies' and returns the list of clients|
-| getPolicies      | This function check if the token is still valid. If its valid call to the **axiosForPolicies** function. If not, first calls the **login** function and then calls the **axiosForPolicies** function                          |
+| login            |  This function logs in with a "client_id" and a "client_secret". The response includes a token that is stored and used to authenticate the user and only deliver the required information if the token is still valid. Also, this function store the date when the token was created and the date when it will expire to make easier there future validation.                                    |
+| axiosForClients  | This function makes a GET request to 'https://dare-nodejs-assessment.herokuapp.com/api/clients' and returns the list of clients|
+| getClients       | This function checks if the token is still valid. If it's valid call to the **axiosForClients** function. If not, first calls the **login** function and then calls the **axiosForClients** function                           |
+| axiosForPolicies | This function makes a GET request to 'https://dare-nodejs-assessment.herokuapp.com/api/policies' and returns the list of clients|
+| getPolicies      | This function checks if the token is still valid. If it's valid call to the **axiosForPolicies** function. If not, first calls the **login** function and then calls the **axiosForPolicies** function                          |
 
   
 ##  Test

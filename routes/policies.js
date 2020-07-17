@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const { getPolicies } = require('../helpers/Policies');
+const { getPolicies } = require('../functions/Policies');
 
 router.get('/', async (req, res, next) => {
   try {
