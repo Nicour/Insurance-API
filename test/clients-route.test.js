@@ -23,6 +23,6 @@ describe("Test clients route", async () => {
       expect(res.body[0]).to.have.all.keys('id', 'name', 'email', 'role')
       done();
     });
-  });
+  }); 
 
 });
